@@ -1,0 +1,75 @@
+<footer class="mt-auto px-3 sm:px-4 pb-4">
+  <div class="mx-auto bg-[#1a1a1a] rounded-2xl px-8 sm:px-12 lg:px-16 pt-10 lg:pt-12 pb-10">
+
+    <!-- CTA Banner -->
+    <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 pb-8">
+      <!-- Left: logo + tagline -->
+      <div class="flex items-center gap-3">
+        <a routerLink="/" class="inline-flex items-center gap-2" aria-label="Meetup – inicio">
+          <span class="w-9 h-9 rounded-xl bg-[#e3082c] flex items-center justify-center">
+            <span class="text-white font-bold text-base leading-none">m</span>
+          </span>
+          <span class="font-bold text-lg text-white">meetup.</span>
+        </a>
+        <span class="text-lg text-white font-light">
+          The <span class="text-[#e3082c] font-semibold">people</span> platform
+        </span>
+      </div>
+
+      <!-- Right: CTA link -->
+      <a routerLink="/groups/create"
+        class="inline-flex items-center gap-2 text-white font-semibold text-sm hover:text-gray-300 transition-colors group">
+        <span class="text-base lg:text-lg font-bold">Create your own Meetup group.</span>
+        <span class="text-[#e3082c] group-hover:text-[#ff4762] font-semibold text-base lg:text-lg">Get Started →</span>
+      </a>
+    </div>
+
+    <!-- Divider -->
+    <div class="border-t border-white/10"></div>
+
+    <!-- Link columns -->
+    <div class="grid grid-cols-2 gap-8 md:grid-cols-4 pt-8">
+      @for (section of sections; track section.title) {
+        <div>
+          <h3 class="text-sm font-semibold text-white mb-4">
+            {{ section.title }}
+          </h3>
+          <ul class="flex flex-col gap-2.5" role="list">
+            @for (link of section.links; track link.path) {
+              <li>
+                <a
+                  [routerLink]="link.path"
+                  class="text-sm text-gray-400 hover:text-white transition-colors"
+                >
+                  {{ link.label }}
+                </a>
+              </li>
+            }
+          </ul>
+        </div>
+      }
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="mt-10 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3">
+      <p class="text-xs text-gray-500">
+        &copy; {{ year }} Meetup. Todos los derechos reservados.
+      </p>
+      <div class="flex items-center gap-5">
+        <a routerLink="/privacy" class="text-xs text-gray-500 hover:text-gray-300 transition-colors">
+          Privacidad
+        </a>
+        <a routerLink="/terms" class="text-xs text-gray-500 hover:text-gray-300 transition-colors">
+          Términos de uso
+        </a>
+        <a routerLink="/cookies" class="text-xs text-gray-500 hover:text-gray-300 transition-colors">
+          Cookies
+        </a>
+        <a routerLink="/accessibility" class="text-xs text-gray-500 hover:text-gray-300 transition-colors">
+          Accesibilidad
+        </a>
+      </div>
+    </div>
+
+  </div>
+</footer>
