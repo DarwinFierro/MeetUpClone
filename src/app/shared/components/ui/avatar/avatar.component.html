@@ -1,0 +1,19 @@
+<div [class]="wrapperClasses()" [attr.aria-label]="name()">
+  @if (src() && !imgError) {
+    <img
+      [src]="src()"
+      [alt]="name()"
+      [class]="imgClasses()"
+      (error)="onImgError()"
+    />
+  } @else {
+    <span [class]="initialsClasses()">{{ initials() }}</span>
+  }
+
+  @if (online() !== undefined) {
+    <span
+      [class]="statusDotClasses()"
+      [attr.aria-label]="online() ? 'Online' : 'Offline'"
+    ></span>
+  }
+</div>
