@@ -1,0 +1,61 @@
+<article class="bg-white rounded-2xl border border-gray-100 overflow-hidden flex flex-col shadow-sm hover:shadow-md transition-shadow duration-200">
+
+  <!-- Cover image with category badge + heart -->
+  <a [routerLink]="['/events', event().id]" class="relative block aspect-[16/9] bg-gray-100 overflow-hidden">
+    @if (event().coverImageUrl) {
+      <img [src]="event().coverImageUrl" [alt]="event().title" loading="lazy"
+        class="w-full h-full object-cover" />
+    } @else {
+      <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100">
+        <span class="text-sm text-gray-300">Imagen del evento</span>
+      </div>
+    }
+
+    <!-- Category badge top-left -->
+    <span class="absolute top-3 left-3 px-3 py-1 text-xs font-semibold text-white rounded-full"
+      [class]="categoryColor()">
+      {{ event().category }}
+    </span>
+
+    <!-- Heart top-right -->
+    <button type="button"
+      class="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center hover:bg-white transition-colors"
+      (click)="onSaveToggle($event)">
+      <svg class="w-4 h-4" [class.text-[#e3082c]]="saved()" [class.fill-[#e3082c]]="saved()" [class.text-gray-400]="!saved()"
+        viewBox="0 0 24 24" stroke="currentColor" [attr.fill]="saved() ? 'currentColor' : 'none'" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round"
+          d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+      </svg>
+    </button>
+  </a>
+
+  <!-- Content -->
+  <div class="flex flex-col flex-1 p-4">
+
+    <!-- Date -->
+    <p class="text-xs font-semibold text-[#e3082c] uppercase tracking-wide">
+      {{ event().date | date:'EEE, d MMM · HH:mm' }}
+    </p>
+
+    <!-- Title -->
+    <a [routerLink]="['/events', event().id]">
+      <h3 class="mt-1.5 text-sm font-bold text-gray-900 leading-snug line-clamp-2 hover:text-[#e3082c] transition-colors">
+        {{ event().title }}
+      </h3>
+    </a>
+
+    <!-- Group name -->
+    <p class="mt-1 text-xs text-gray-500 truncate">{{ event().groupName }}</p>
+
+    <!-- Spacer + divider + button -->
+    <div class="mt-auto pt-3">
+      <div class="border-t border-gray-100 pt-3">
+        <button type="button"
+          class="w-full py-2 rounded-full text-sm font-semibold text-[#e3082c] border border-[#e3082c]/20 hover:bg-[#fff1f3] transition-colors">
+          Asistir
+        </button>
+      </div>
+    </div>
+
+  </div>
+</article>

@@ -1,0 +1,54 @@
+<article class="bg-white rounded-2xl border border-gray-100 overflow-hidden flex flex-col shadow-sm hover:shadow-md transition-shadow duration-200">
+
+  <!-- Cover -->
+  <a [routerLink]="['/groups', group().id]" class="relative block h-24 overflow-hidden"
+    [style.background]="coverGradient()">
+    @if (group().coverImageUrl) {
+      <img [src]="group().coverImageUrl" [alt]="group().name" loading="lazy"
+        class="w-full h-full object-cover" />
+    }
+
+    <!-- Avatar overlay bottom-left -->
+    <div class="absolute -bottom-5 left-4 w-12 h-12 rounded-xl bg-white border-2 border-white shadow-sm flex items-center justify-center text-lg font-bold text-gray-600 overflow-hidden">
+      @if (group().avatarUrl) {
+        <img [src]="group().avatarUrl" [alt]="group().name" class="w-full h-full object-cover" />
+      } @else {
+        <span class="bg-gray-100 w-full h-full flex items-center justify-center">
+          {{ group().name.charAt(0) }}
+        </span>
+      }
+    </div>
+  </a>
+
+  <!-- Content -->
+  <div class="pt-8 px-4 pb-4 flex flex-col flex-1">
+    <a [routerLink]="['/groups', group().id]">
+      <h3 class="text-sm font-bold text-gray-900 leading-snug truncate hover:text-[#e3082c] transition-colors">
+        {{ group().name }}
+      </h3>
+    </a>
+    <p class="mt-0.5 text-xs text-gray-500 line-clamp-1">{{ group().category }}</p>
+
+    <!-- Footer: members + join button -->
+    <div class="mt-auto pt-3 flex items-center justify-between">
+      <div class="flex items-center gap-1 text-xs text-gray-500">
+        <svg class="w-3.5 h-3.5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
+        </svg>
+        {{ formatMembers(group().memberCount) }} miembros
+      </div>
+      @if (joined()) {
+        <a [routerLink]="['/groups', group().id]"
+          class="px-4 py-1.5 text-xs font-semibold rounded-full text-[#e3082c] border border-[#e3082c]/20 hover:bg-[#fff1f3] transition-colors">
+          Ver grupo
+        </a>
+      } @else {
+        <button type="button" (click)="onJoin($event)"
+          class="px-4 py-1.5 text-xs font-semibold rounded-full text-gray-900 border border-gray-300 hover:bg-gray-50 transition-colors">
+          Unirse
+        </button>
+      }
+    </div>
+  </div>
+</article>
