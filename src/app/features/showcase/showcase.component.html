@@ -1,0 +1,184 @@
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-16">
+
+  <header>
+    <h1 class="text-3xl font-bold text-gray-900">Component Showcase</h1>
+    <p class="mt-2 text-gray-500">Todos los componentes compartidos con sus variantes.</p>
+  </header>
+
+  <!-- BUTTONS -->
+  <section>
+    <h2 class="text-xl font-bold text-gray-900 mb-6 border-b border-gray-200 pb-2">Buttons</h2>
+    <div class="space-y-6">
+      <div>
+        <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">Variants</h3>
+        <div class="flex flex-wrap items-center gap-3">
+          <app-button variant="primary">Primary</app-button>
+          <app-button variant="danger">Danger</app-button>
+          <app-button variant="outline">Outline</app-button>
+          <app-button variant="ghost">Ghost</app-button>
+        </div>
+      </div>
+      <div>
+        <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">Sizes</h3>
+        <div class="flex flex-wrap items-center gap-3">
+          <app-button size="sm">Small</app-button>
+          <app-button size="md">Medium</app-button>
+          <app-button size="lg">Large</app-button>
+        </div>
+      </div>
+      <div>
+        <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">States</h3>
+        <div class="flex flex-wrap items-center gap-3">
+          <app-button [disabled]="true">Disabled</app-button>
+          <app-button [loading]="true">Loading</app-button>
+          <app-button variant="danger" [loading]="true">Saving…</app-button>
+        </div>
+      </div>
+      <div class="max-w-sm">
+        <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">Full Width</h3>
+        <app-button size="full">Full Width Button</app-button>
+      </div>
+    </div>
+  </section>
+
+  <!-- BADGES -->
+  <section>
+    <h2 class="text-xl font-bold text-gray-900 mb-6 border-b border-gray-200 pb-2">Badges</h2>
+    <div class="flex flex-wrap items-center gap-3">
+      <app-badge>Default</app-badge>
+      <app-badge variant="red">Red</app-badge>
+      <app-badge variant="blue">Blue</app-badge>
+      <app-badge variant="green">Green</app-badge>
+      <app-badge variant="pink">Pink</app-badge>
+      <app-badge variant="purple">Purple</app-badge>
+    </div>
+    <div class="flex flex-wrap items-center gap-3 mt-4">
+      <app-badge size="md">Default MD</app-badge>
+      <app-badge variant="red" size="md">Red MD</app-badge>
+      <app-badge variant="blue" size="md">Blue MD</app-badge>
+    </div>
+  </section>
+
+  <!-- INPUTS -->
+  <section>
+    <h2 class="text-xl font-bold text-gray-900 mb-6 border-b border-gray-200 pb-2">Inputs</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <app-input label="Nombre" placeholder="Tu nombre completo" [required]="true" />
+      <app-input label="Email" type="email" placeholder="correo&#64;ejemplo.com" hint="No compartiremos tu email." />
+      <app-input label="Contraseña" type="password" placeholder="••••••••" />
+      <app-input label="Buscar" type="search" placeholder="Buscar eventos..." size="sm" />
+      <app-input label="Con error" placeholder="Campo requerido" errorMessage="Este campo es obligatorio" />
+      <app-input label="Deshabilitado" placeholder="No editable" [disabled]="true" />
+    </div>
+  </section>
+
+  <!-- AVATARS -->
+  <section>
+    <h2 class="text-xl font-bold text-gray-900 mb-6 border-b border-gray-200 pb-2">Avatars</h2>
+    <div class="space-y-6">
+      <div>
+        <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">Sizes (Initials)</h3>
+        <div class="flex flex-wrap items-end gap-4">
+          <app-avatar name="Ana López" size="xs" />
+          <app-avatar name="Ana López" size="sm" />
+          <app-avatar name="Ana López" size="md" />
+          <app-avatar name="Ana López" size="lg" />
+          <app-avatar name="Ana López" size="xl" />
+        </div>
+      </div>
+      <div>
+        <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">Online Status</h3>
+        <div class="flex flex-wrap items-end gap-4">
+          <app-avatar name="Carlos M" size="lg" [online]="true" />
+          <app-avatar name="María R" size="lg" [online]="false" />
+          <app-avatar name="Pedro S" size="md" [online]="true" />
+        </div>
+      </div>
+      <div>
+        <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">With Image</h3>
+        <div class="flex flex-wrap items-end gap-4">
+          <app-avatar name="User" size="lg" src="https://i.pravatar.cc/96?img=1" />
+          <app-avatar name="User" size="lg" src="https://i.pravatar.cc/96?img=5" [online]="true" />
+          <app-avatar name="User" size="md" src="https://i.pravatar.cc/80?img=12" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPINNERS -->
+  <section>
+    <h2 class="text-xl font-bold text-gray-900 mb-6 border-b border-gray-200 pb-2">Spinners</h2>
+    <div class="space-y-6">
+      <div>
+        <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">Sizes</h3>
+        <div class="flex flex-wrap items-center gap-4">
+          <app-spinner size="xs" />
+          <app-spinner size="sm" />
+          <app-spinner size="md" />
+          <app-spinner size="lg" />
+          <app-spinner size="xl" />
+        </div>
+      </div>
+      <div>
+        <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">Variants</h3>
+        <div class="flex flex-wrap items-center gap-4">
+          <app-spinner variant="red" size="lg" />
+          <app-spinner variant="gray" size="lg" />
+          <app-spinner variant="blue" size="lg" />
+          <div class="bg-gray-900 p-4 rounded-lg">
+            <app-spinner variant="white" size="lg" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION HEADERS -->
+  <section>
+    <h2 class="text-xl font-bold text-gray-900 mb-6 border-b border-gray-200 pb-2">Section Headers</h2>
+    <div class="space-y-8 bg-gray-50 rounded-2xl p-6">
+      <app-section-header
+        title="Eventos recomendados para ti"
+        linkLabel="Ver todos"
+        linkPath="/events"
+      />
+      <app-section-header
+        title="Grupos populares cerca de ti"
+        eyebrow="Descubre"
+        subtitle="Encuentra tu comunidad local"
+        linkLabel="Explorar"
+        linkPath="/groups"
+      />
+      <app-section-header
+        title="Sin enlace, solo título"
+      />
+    </div>
+  </section>
+
+  <!-- EVENT CARDS -->
+  <section>
+    <h2 class="text-xl font-bold text-gray-900 mb-6 border-b border-gray-200 pb-2">Event Cards</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+      @for (event of mockEvents; track event.id) {
+        <app-event-card
+          [event]="event"
+          [saved]="event.id === 'e2'"
+        />
+      }
+    </div>
+  </section>
+
+  <!-- GROUP CARDS -->
+  <section>
+    <h2 class="text-xl font-bold text-gray-900 mb-6 border-b border-gray-200 pb-2">Group Cards</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+      @for (group of mockGroups; track group.id) {
+        <app-group-card
+          [group]="group"
+          [joined]="group.id === 'g2'"
+        />
+      }
+    </div>
+  </section>
+
+</div>
