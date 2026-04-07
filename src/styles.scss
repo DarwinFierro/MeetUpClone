@@ -31,3 +31,18 @@ app-home {
 ::-webkit-scrollbar-track { background: #f3f4f6; }
 ::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 9999px; }
 ::-webkit-scrollbar-thumb:hover { background: #9ca3af; }
+
+/* Auth dialog backdrop and styles */
+.p-dialog-mask {
+  background-color: rgba(0, 0, 0, 0.75) !important;
+  backdrop-filter: blur(2px);
+}
+
+.auth-dialog .p-dialog-content {
+  border-radius: 1.25rem !important;
+  padding: 0 !important;
+}
+
+.auth-dialog .p-dialog {
+  border-radius: 1.25rem !important;
+}

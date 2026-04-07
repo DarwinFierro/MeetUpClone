@@ -1,0 +1,9 @@
+<app-login-modal
+  [(visible)]="showLogin"
+  (switchToRegister)="openRegister()"
+/>
+
+<app-register-modal
+  [(visible)]="showRegister"
+  (switchToLogin)="openLogin()"
+/>
