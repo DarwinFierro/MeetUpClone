@@ -17,8 +17,6 @@ export class NavbarComponent {
   menuOpen = signal(false);
   navLinks = [
     { label: 'Explorar', path: '/explore', exact: false },
-    { label: 'Grupos',   path: '/groups',  exact: false },
-    { label: 'Eventos',  path: '/events',  exact: false },
   ];
 
   toggleMenu() { this.menuOpen.update(v => !v); }
