@@ -1,0 +1,106 @@
+import { Injectable } from '@angular/core';
+import { Event } from '../models/event.model';
+
+@Injectable({ providedIn: 'root' })
+export class EventService {
+  private events: Event[] = [
+    {
+      id: 'e1',
+      title: 'Meetup de Desarrolladores Angular & React',
+      description: `¡Únete a nuestra reunión mensual de desarrolladores Angular y React!\n\nEste mes discutiremos las últimas actualizaciones de Angular 19 y React 19, patrones de arquitectura frontend y mejores prácticas para aplicaciones a escala.\n\nAgenda:\n• 19:00 – Registro y networking\n• 19:30 – Presentación Angular 19: novedades y migración\n• 20:15 – Break y networking\n• 20:30 – Workshop React 19: Server Components en la práctica\n• 21:15 – Q&A y cierre`,
+      coverImageUrl: '',
+      date: new Date('2026-03-12T19:00:00'),
+      endDate: new Date('2026-03-12T21:30:00'),
+      mode: 'in-person',
+      location: { address: 'Calle 72 #10-07', city: 'Bogotá', country: 'Colombia' },
+      groupId: 'g1',
+      groupName: 'Bogotá Dev Community',
+      organizer: { id: 'u1', name: 'Andrés López' },
+      attendees: [
+        { id: 'a1', name: 'Ana García' },
+        { id: 'a2', name: 'Bruno Medina' },
+        { id: 'a3', name: 'Camila Torres' },
+        { id: 'a4', name: 'Diego Ruiz' },
+        { id: 'a5', name: 'Elena Vargas' },
+      ],
+      maxAttendees: 50,
+      attendeeCount: 32,
+      category: 'Tecnología',
+      tags: ['Angular', 'React', 'Frontend', 'JavaScript', 'TypeScript', 'Bogotá'],
+      isFree: true,
+    },
+    {
+      id: 'e2',
+      title: 'Workshop de UX/UI Design con Figma',
+      description: `Un workshop intensivo para aprender las mejores prácticas de diseño UX/UI usando Figma como herramienta principal.\n\nAprenderás a crear prototipos de alta fidelidad, sistemas de diseño escalables y flujos de usuario efectivos.\n\nAgenda:\n• 09:00 – Introducción a UX/UI\n• 10:00 – Figma avanzado\n• 11:30 – Ejercicio práctico\n• 13:00 – Cierre`,
+      coverImageUrl: '',
+      date: new Date('2026-03-14T09:00:00'),
+      endDate: new Date('2026-03-14T13:00:00'),
+      mode: 'in-person',
+      location: { address: 'Online', city: 'Online', country: 'Colombia' },
+      groupId: 'g2',
+      groupName: 'Designers Latam',
+      organizer: { id: 'u2', name: 'María Fernández' },
+      attendees: [
+        { id: 'b1', name: 'Laura Pérez' },
+        { id: 'b2', name: 'Sebastián Gil' },
+        { id: 'b3', name: 'Valentina Cruz' },
+      ],
+      maxAttendees: 100,
+      attendeeCount: 87,
+      category: 'Diseño',
+      tags: ['Figma', 'UX', 'UI', 'Diseño', 'Prototipado'],
+      isFree: false,
+      price: 50000,
+      currency: 'COP',
+    },
+    {
+      id: 'e3',
+      title: 'Club de Running y Bienestar Urbano',
+      description: `Únete a nuestro club de running semanal para mantenerte activo en la ciudad.\n\nRecorremos el parque El Virrey cada semana con grupos de diferentes ritmos. ¡Todos los niveles bienvenidos!`,
+      coverImageUrl: '',
+      date: new Date('2026-03-15T17:00:00'),
+      endDate: new Date('2026-03-15T19:00:00'),
+      mode: 'in-person',
+      location: { address: 'Parque El Virrey', city: 'Bogotá', country: 'Colombia' },
+      groupId: 'g3',
+      groupName: 'Runners Bogotá',
+      organizer: { id: 'u3', name: 'Carlos Mejía' },
+      attendees: [
+        { id: 'c1', name: 'Andrea Ríos' },
+        { id: 'c2', name: 'Felipe Castro' },
+      ],
+      maxAttendees: 200,
+      attendeeCount: 124,
+      category: 'Deportes',
+      tags: ['Running', 'Fitness', 'Bienestar', 'Bogotá'],
+      isFree: true,
+    },
+    {
+      id: 'e4',
+      title: 'Intercambio de Idiomas Café + Conversación',
+      description: `Practica idiomas en un ambiente relajado tomando un café. Grupos de conversación en inglés, francés, portugués y más.`,
+      coverImageUrl: '',
+      date: new Date('2026-03-16T11:00:00'),
+      endDate: new Date('2026-03-16T13:00:00'),
+      mode: 'in-person',
+      location: { address: 'Café Pergamino', city: 'Medellín', country: 'Colombia' },
+      groupId: 'g4',
+      groupName: 'Language Exchange CO',
+      organizer: { id: 'u4', name: 'Sara Montoya' },
+      attendees: [
+        { id: 'd1', name: 'Juliana Herrera' },
+        { id: 'd2', name: 'Miguel Ángel Díaz' },
+      ],
+      maxAttendees: 60,
+      attendeeCount: 45,
+      category: 'Idiomas',
+      tags: ['Idiomas', 'Inglés', 'Conversación', 'Café', 'Medellín'],
+      isFree: true,
+    },
+  ];
+
+  getById(id: string): Event | undefined {
+    return this.events.find(e => e.id === id);
+  }
+}

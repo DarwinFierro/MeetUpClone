@@ -9,6 +9,11 @@ export const routes: Routes = [
       import('./features/home/home.component').then(m => m.HomeComponent),
   },
   {
+    path: 'events/:id',
+    loadComponent: () =>
+      import('./features/events/event-detail/event-detail.component').then(m => m.EventDetailComponent),
+  },
+  {
     path: 'profile',
     canActivate: [authGuard],
     loadComponent: () =>
