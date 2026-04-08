@@ -1,42 +1,45 @@
-import { Component, inject, input, output, model } from '@angular/core';
+import { Component, inject, output, model } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { DialogModule } from 'primeng/dialog';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { PasswordModule } from 'primeng/password';
+import { Router } from '@angular/router';
 import { AuthService } from '../../../core/services/auth.service';
 
 @Component({
   selector: 'app-login-modal',
   standalone: true,
-  imports: [CommonModule, FormsModule, DialogModule, ButtonModule, InputTextModule, PasswordModule],
+  imports: [CommonModule, ReactiveFormsModule, DialogModule, ButtonModule, InputTextModule, PasswordModule],
   templateUrl: './login-modal.component.html',
 })
 export class LoginModalComponent {
-  visible = model<boolean>(false);
+  visible          = model<boolean>(false);
   switchToRegister = output<void>();
 
-  private auth = inject(AuthService);
+  private auth   = inject(AuthService);
+  private router = inject(Router);
+  private fb     = inject(FormBuilder);
 
-  email    = '';
-  password = '';
+  form = this.fb.group({
+    email:    ['', [Validators.required, Validators.email]],
+    password: ['', [Validators.required, Validators.minLength(6)]],
+  });
+
+  get email()    { return this.form.get('email')!; }
+  get password() { return this.form.get('password')!; }
 
   onLogin(): void {
-    if (this.email && this.password) {
-      this.auth.login(this.email, this.password);
-      this.visible.set(false);
-      this.resetForm();
-    }
+    if (this.form.invalid) return;
+    this.auth.login(this.email.value!, this.password.value!);
+    this.visible.set(false);
+    this.form.reset();
+    this.router.navigate(['/profile']);
   }
 
   onSwitchToRegister(): void {
     this.visible.set(false);
     this.switchToRegister.emit();
-  }
-
-  private resetForm(): void {
-    this.email    = '';
-    this.password = '';
   }
 }
